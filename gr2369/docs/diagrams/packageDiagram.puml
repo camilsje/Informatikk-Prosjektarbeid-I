@@ -1,0 +1,34 @@
+@startuml packageDiagram
+component core {
+    package sportsRentals.core
+    package sportsRentals.json
+}
+
+sportsRentals.core ..> sportsRentals.json
+
+component ui {
+    package sportsRentals.ui
+}
+
+component jackson {
+}
+
+sportsRentals.json ..> jackson
+
+component javafx {
+    component fxml
+}
+
+ui ..> javafx
+ui ..> fxml
+ui ..> sportsRentals.core
+ui ..> sportsRentals.json
+
+component springboot/restserver {
+    package sportsRentals.restserver
+}
+
+sportsRentals.restserver ..> sportsRentals.core
+sportsRentals.restserver ..> sportsRentals.json
+
+@enduml

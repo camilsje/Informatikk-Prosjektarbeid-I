@@ -1,0 +1,12 @@
+Basketball,     39,99,179,299
+Bicycle,        119,249,399,699
+Canoe,          139,279,439,749
+Football,       39,99,179,299
+Hiking gear,    69,159,299,419
+Kayak,          129,269,419,719
+Ski,            79,149,279,399
+Squash racket,  29,79,159,259
+Surfboard,      69,159,299,419
+Tennis racket,  39,99,179,299
+Volleyball,     39,99,179,299
+Wetsuit,        69,159,299,419

@@ -1,0 +1,50 @@
+@startuml sequenceDiagram
+
+actor Brenda
+
+box "ui" #Plum
+participant sportsRentalsController #White
+participant RemoteSportsRentalsAccess #White
+end box
+
+box "core" #LightBlue
+participant Equipment #White
+participant EquipmentStorage #White
+end box
+
+box "springboot/restserver" #Orange
+participant SportsRentalsController #White
+participant SportsRentalsService #White
+end box
+
+Brenda -> sportsRentalsController : Select start date 
+sportsRentalsController -> Equipment : handleStartDate()
+
+Brenda -> sportsRentalsController : Select rental period
+sportsRentalsController -> Equipment : handleRentalPeriod()
+
+Brenda -> sportsRentalsController : Show available options
+sportsRentalsController -> RemoteSportsRentalsAccess : initializeListView()
+RemoteSportsRentalsAccess -> SportsRentalsController : getAllAvailableEquipment()
+SportsRentalsController -> SportsRentalsService : getAvailableEquipment()
+SportsRentalsService -> EquipmentStorage : getAllAvailableEquipment()
+EquipmentStorage -> sportsRentalsController : allAvailableEquipment
+sportsRentalsController -> Brenda : Show available equipment
+
+Brenda -> sportsRentalsController : Select equipment to rent
+sportsRentalsController -> RemoteSportsRentalsAccess : getSelectedEquipment(selected equipment)
+RemoteSportsRentalsAccess -> SportsRentalsController : getSelectedEquipment()
+SportsRentalsController -> SportsRentalsService : getEquipment()
+SportsRentalsService -> EquipmentStorage : getEquipmentFromType()
+EquipmentStorage -> sportsRentalsController : equipment
+sportsRentalsController -> Brenda : Display rental information
+
+Brenda -> sportsRentalsController : handleConfirmRental()
+sportsRentalsController -> RemoteSportsRentalsAccess : postAvailability()
+RemoteSportsRentalsAccess -> SportsRentalsController : postAvailability()
+SportsRentalsController -> SportsRentalsService : addToAvailablity()
+SportsRentalsService -> EquipmentStorage : addToAvailablity()
+SportsRentalsService -> SportsRentalsService : autoSaveEquipmentStorage()
+SportsRentalsService -> Brenda : Rental confirmed. Window closes.
+
+@enduml

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sportsRentals.ui.sportsRentalsController">
+   <children>
+      <ListView fx:id="availableEquipment" editable="true" layoutX="254.0" layoutY="160.0" onMouseClicked="#displayEquipment" prefHeight="257.0" prefWidth="199.0" />
+      <Label layoutX="25.0" layoutY="41.0" text="SPORTS RENTALS" textFill="#1e73e3">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="254.0" layoutY="135.0" prefHeight="17.0" prefWidth="169.0" text="Select equipment to rent" textFill="#1e73e3">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="threeDays" layoutX="117.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleRentalPeriod" prefHeight="26.0" prefWidth="65.0" text="3 days" />
+      <Button fx:id="oneDay" layoutX="38.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleRentalPeriod" prefHeight="26.0" prefWidth="65.0" text="1 day" />
+      <Button fx:id="twoWeeks" layoutX="118.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleRentalPeriod" text="2 weeks " />
+      <Button fx:id="oneWeek" layoutX="37.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleRentalPeriod" prefHeight="26.0" prefWidth="65.0" text="1 week" />
+      <Label layoutX="37.0" layoutY="201.0" text="Select rental period" textFill="#1e73e3">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="481.0" layoutY="135.0" text="Information about the rental" textFill="#1e73e3">
+         <font>
+            <Font name="System Font" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="confirmRental" layoutX="585.0" layoutY="390.0" mnemonicParsing="false" onAction="#handleConfirmRental" text="Confirm the rental" />
+      <Label fx:id="equipmentLabel" layoutX="481.0" layoutY="170.0" prefHeight="26.0" prefWidth="78.0" text="Equipment:" />
+      <Label fx:id="rentalPeriodLabel" layoutX="481.0" layoutY="210.0" prefHeight="26.0" prefWidth="78.0" text="Start date:" />
+      <Label fx:id="priceLabel" layoutX="481.0" layoutY="290.0" prefHeight="26.0" prefWidth="78.0" text="Price:" />
+      <Label fx:id="equipmentType" layoutX="570.0" layoutY="170.0" prefHeight="26.0" prefWidth="139.0" />
+      <Label fx:id="startDate" layoutX="570.0" layoutY="210.0" prefHeight="26.0" prefWidth="139.0" />
+      <Label fx:id="endDate" layoutX="570.0" layoutY="250.0" prefHeight="26.0" prefWidth="139.0" />
+      <DatePicker fx:id="calendar" layoutX="37.0" layoutY="160.0" onAction="#handleStartDate" />
+      <Label layoutX="37.0" layoutY="135.0" text="Select start date" textFill="#1e73e3">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="show" layoutX="37.0" layoutY="390.0" mnemonicParsing="false" onAction="#initializeListView" prefHeight="26.0" prefWidth="149.0" text="Show available options" />
+      <Label fx:id="rentalPeriodLabel1" layoutX="481.0" layoutY="250.0" prefHeight="26.0" prefWidth="78.0" text="End date:" />
+      <Label fx:id="price" layoutX="570.0" layoutY="290.0" prefHeight="26.0" prefWidth="139.0" />
+      <ImageView fitHeight="101.0" fitWidth="114.0" layoutX="585.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@sportsRentalsIcon.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="startOver" layoutX="498.0" layoutY="390.0" mnemonicParsing="false" onAction="#startOver" text="Start over" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,42 @@
+@startuml classDiagram
+
+class Equipment {
+    - String type
+    - HashMap<String, Double> prices
+    - List<String> availablity
+    - String rentalPeriodString
+    - int rentalPeriod
+    - LocalDate startDate
+    + Equipment()
+    + Equipment(String type, HashMap<String, Double> prices)
+    + List<String> getAvailability()
+    + addToAvailability(LocalDate startDate, int days)
+    + addToAvailabilityTwoDates(String startDateString, String endDateString)
+    + Boolean isAvailable(LocalDate startDate, int days)
+    + String getType()
+    + setType(String type)
+    + addPrice(String key, Double value)
+    + HashMap<String, Double> getPrices()
+    + Double getPrice(String key)
+    + LocalDate getStartDate()
+    + setStartDate(LocalDate startDate)
+    + String getRentalPeriodString()
+    + setRentalPeriodString(String rentalPeriodString)
+    + int getRentalPeriod()
+    + setRentalPeriod(int rentalPeriod)
+    + convertRentalPeriodToInt()
+}
+
+class EquipmentStorage {
+    - List<Equipment> allEquipment
+    - List<Equipment> allAvailableEquipment
+    + EquipmentStorage()
+    + List<Equipment> getAllEquipment()
+    + List<Equipment> getAllAvailableEquipment(LocalDate startDate, int days)
+    + addToAllEquipment(Equipment equipment)
+    + Equipment getEquipmentFromType(String type)
+}
+
+EquipmentStorage "1" --o "0..*" Equipment : Contains
+
+@enduml
